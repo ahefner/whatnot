@@ -40,16 +40,17 @@ let rec select index = function
      if (index < lenl)
      then let (x,nl) = (select index l) in (x, makeSubtree (nl, Tree r))
      else let (x,nr) = (select (index-lenl) r) in (x, makeSubtree (Tree l, nr))
-  | Seg (0,x::_) -> x, EmptyTree
   | Seg (n,t) -> selSeg index (n,t)
 ;;
 
 let makeTree = function
-  | [] -> EmptyTree
-  | x -> Tree (Seg ((List.length x), x));;
+  (*  | [] -> 'a EmptyTree *)
+  | x -> Seg ((List.length x), x);;
 
-let permutation list =
-  let rec aux = function
-    | EmptyTree -> []
-    | Tree s -> let (x,t) = select (Random.int (ctreeLen s)) s in x :: aux t
-  in aux (makeTree list) ;;
+let permutation = function
+  | [] -> []
+  | x::t ->
+     let rec aux = function
+       | EmptyTree -> []
+       | Tree s -> let (x,t) = select (Random.int (ctreeLen s)) s in x :: aux t
+     in aux (Tree (makeTree (x::t))) ;;
