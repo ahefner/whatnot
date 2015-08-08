@@ -51,4 +51,4 @@ let permutation list =
   let rec aux = function
     | EmptyTree -> []
     | Tree s -> let (x,t) = select (Random.int (ctreeLen s)) s in x :: aux t
-      in aux (makeTree list) ;;
+  in aux (makeTree list) ;;
