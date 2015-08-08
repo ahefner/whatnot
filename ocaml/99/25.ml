@@ -43,14 +43,12 @@ let rec select index = function
   | Seg (n,t) -> selSeg index (n,t)
 ;;
 
-let makeTree = function
-  (*  | [] -> 'a EmptyTree *)
-  | x -> Seg ((List.length x), x);;
+let makeTree (type a) = function
+  | [] -> EmptyTree
+  | x -> Tree (Seg ((List.length x), x)) ;;
 
-let permutation = function
-  | [] -> []
-  | x::t ->
-     let rec aux = function
-       | EmptyTree -> []
-       | Tree s -> let (x,t) = select (Random.int (ctreeLen s)) s in x :: aux t
-     in aux (Tree (makeTree (x::t))) ;;
+let permutation list =
+  let rec aux = function
+    | EmptyTree -> []
+    | Tree s -> let (x,t) = select (Random.int (ctreeLen s)) s in x :: aux t
+      in aux (makeTree list) ;;
