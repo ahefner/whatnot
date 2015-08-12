@@ -1,0 +1,27 @@
+https://github.com/the-lambda-church/merlin/issues/283
+
+def-lkb commented on Oct 25, 2014
+The purpose of (setq merlin-use-auto-complete-mode 'easy), among other, is to disable automatic completion. Because it is cumbersome most of the time.
+
+However, with some patience you can setup a friendly environment.
+
+Reenable implicit completion:
+
+ (setq merlin-use-auto-complete-mode t)
+ Bind explicit invocation, just in case (some people prefer TAB):
+
+(global-set-key (kbd "C-SPC") 'auto-complete)
+
+------------------------------------------------------------
+
+def-lkb commented on Oct 25, 2014
+The purpose of (setq merlin-use-auto-complete-mode 'easy), among other, is to disable automatic completion. Because it is cumbersome most of the time.
+
+However, with some patience you can setup a friendly environment.
+
+Reenable implicit completion:
+
+ (setq merlin-use-auto-complete-mode t)
+ Bind explicit invocation, just in case (some people prefer TAB):
+
+(global-set-key (kbd "C-SPC") 'auto-complete)
