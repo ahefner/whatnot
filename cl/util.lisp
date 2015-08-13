@@ -46,8 +46,23 @@
         for i from 0 below (- len window-size)
         collect (histogram-entropy (histogram (subseq sequence i (+ i window-size))))))
 
+;;; This definition isn't useful.. what would be?
+#+NIL
 (defun sliding-window-information-gain (window-size sequence)
   (map 'vector
        (lambda (x) (- (log window-size 2) x))
        (sliding-entropy window-size sequence)))
 
+(defun extract-column (index seq)
+  (map 'vector (lambda (row) (elt row index)) seq))
+
+(defun diff-seq (sequence &optional (result-type 'vector))
+  (map result-type #'- sequence (concatenate 'vector #(0) sequence)))
+
+(defun diff-latched-seq (sequence &optional (result-type 'vector))
+  (let ((last-value 0))
+    (map result-type
+         (lambda (x)
+           (prog1 (and x (- x last-value))
+             (setf last-value (or x last-value))))
+         sequence)))
