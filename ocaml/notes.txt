@@ -25,3 +25,36 @@ Reenable implicit completion:
  Bind explicit invocation, just in case (some people prefer TAB):
 
 (global-set-key (kbd "C-SPC") 'auto-complete)
+
+------------------------------------------------------------
+
+diml commented on Apr 24, 2013
+Can you check that ~/.opam/system/bin is in the PATH of your emacs process?
+
+You can use the getenv function of emacs. For example press M-: then type:
+
+(insert (replace-regexp-in-string ":" "\n" (getenv "PATH")))
+If it is not this means that the environment variables of your emacs are not set correctly in order to use opam. Here is some emacs lisp code that should work, you can put it in your ~/.emacs:
+
+(mapc
+ (lambda (line)
+   (when (string-match "\\(.*\\)=\\(.*\\)" line)
+     (setenv (match-string 1 line) (match-string 2 line))))
+ (split-string
+  (shell-command-to-string "opam config -env")
+  ";[ \r\n\t]*"))
+
+------------------------------------------------------------
+
+Above form didn't work for me. Put garbage in the PATH variable. Had to revise as follows:
+
+(mapc
+ (lambda (line)
+   (when (string-match "\\(.*\\)=\"\\(.*\\)\"" line)
+     (setenv (match-string 1 line) (match-string 2 line))))
+ (split-string
+  (shell-command-to-string "opam config -env")
+  ";[ \r\n\t]*"))
+
+
+------------------------------------------------------------
