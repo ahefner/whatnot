@@ -1,15 +1,15 @@
-(* Calculate Euler's totient function (medium)
+(* Determine the greatest common divisor of two positive integer numbers. (medium)
 
-Euler's so-called totient function is defined as the number of
-positive integers r (1 <= r < m) that are coprime to m. We let phi(1)
-= 1.
+Use Euclid's algorithm.
 
-# phi 10;;
-- : int = 4
-# phi 13;;
-- : int = 12
+# gcd 13 27;;
+- : int = 1
+# gcd 20536 7826;;
+- : int = 2
  *)
 
-let phi r =
-  let rec aux i a = if (i <= 1) then a+1 else aux (i-1) (a + if (coprime i r) then 1 else 0) in
-  aux (r-1) 0 ;;
+let rec gcd a b =
+  let x = min a b in
+  let y = max a b in
+  if (y mod x == 0) then x else gcd x (y mod x) ;;
+
