@@ -23,14 +23,19 @@ let rec find key = function
        | Three (l,x,_,y,r) -> if (key < x) then findin l else findin r
        | Leaf (x) -> key = x
        | TwoLeaf (x,y) -> (key = x || key = y)
-     in findin n
-;;
+     in findin n ;;
 
 (* Recursive three element bubble sort? :) *)
 let rec sortedtriple x y z =
   if x > y then sortedtriple y x z
   else if y > z then sortedtriple x z y
   else (x,y,z) ;;
+
+let trio x y z =
+  let (a,b,c) = sortedtriple x y z
+  in Two (Leaf a, b, Leaf c) ;;
+
+(* Insertion into 2-3 tree *)
 
 type 'a insertop = ReplaceWith of 'a ttnode | MergeUp of 'a ttnode * 'a * 'a ttnode ;;
 
@@ -76,6 +81,50 @@ let insert key = function
   | Root root -> match inserting key root with
                  | ReplaceWith newroot -> Root newroot
                  | MergeUp (l,x,r) -> Root (Two (l,x,r)) ;;
+
+(* Removal from 2-3 Tree *)
+
+(* OMFG, no wonder nobody implements 2-3 trees directly and every
+reference glosses over how the deletion works. *)
+
+(*
+type 'a remop =
+  | Child of 'a ttnode          (* No rotation required *)
+  | Hole                        (* Empty leaf *)
+  | Orphans of 'a * 'a (* Orphaned leaves of removed Two-node *)
+;;
+
+let rec removing key = function
+  | Leaf x when x=key -> Hole
+  | TwoLeaf (x,k) when k=key -> Child (Leaf x)
+  | TwoLeaf (k,x) when k=key -> Child (Leaf x)
+  | Leaf x -> Child (Leaf x)
+  | TwoLeaf xy -> Child (TwoLeaf xy)
+  | Two (l,x,r) when x=key ->
+     begin
+       match (l,r) with
+       | (Leaf l, Leaf r) -> Orphans (l,r)
+       | (TwoLeaf (a,b), Leaf c) | (Leaf a, TwoLeaf (a,b)) -> Child (trio a b c)
+       | (TwoLeaf (a,b), TwoLeaf (c,d)) -> Child (Two (Leaf (min a b), max a b, TwoLeaf (c,d))) (* arbitrary choice? *)
+       | (l,r) ->
+          let 
+     end
+       
+  | Two (Leaf l, x, Leaf r) when x=key -> Orphans (l,r)
+  | Two (TwoLeaf (a,b), x, c) when x=key -> Child (Two ((Leaf (min a b)), (max a b), c))
+  | Two (a, x, TwoLeaf(b,c)) when x=key -> Child (Two (a, (min b c), Leaf (max b c)))
+;;
+
+
+  | Two (l,x,r) when x=k -> Orphans (l,r)
+  | 
+
+let remove key = function
+  | Empty -> Empty
+  | Root root = match removing key root with
+                | Hole -> Empty
+
+ *)
 
 (* TODO: Implement delete operation*)
 
