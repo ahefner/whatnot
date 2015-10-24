@@ -37,7 +37,9 @@ let trio x y z =
 
 (* Insertion into 2-3 tree *)
 
-type 'a insertop = ReplaceWith of 'a ttnode | MergeUp of 'a ttnode * 'a * 'a ttnode ;;
+type 'a insertop =
+  | ReplaceWith of 'a ttnode
+  | MergeUp of 'a ttnode * 'a * 'a ttnode ;;
 
 let joinleft = function
   | (ReplaceWith l, x, r) -> ReplaceWith (Two (l,x,r))
@@ -82,51 +84,8 @@ let insert key = function
                  | ReplaceWith newroot -> Root newroot
                  | MergeUp (l,x,r) -> Root (Two (l,x,r)) ;;
 
-(* Removal from 2-3 Tree *)
+(* Removal from 2-3 Tree *) (* TODO *)
 
-(* OMFG, no wonder nobody implements 2-3 trees directly and every
-reference glosses over how the deletion works. *)
-
-(*
-type 'a remop =
-  | Child of 'a ttnode          (* No rotation required *)
-  | Hole                        (* Empty leaf *)
-  | Orphans of 'a * 'a (* Orphaned leaves of removed Two-node *)
-;;
-
-let rec removing key = function
-  | Leaf x when x=key -> Hole
-  | TwoLeaf (x,k) when k=key -> Child (Leaf x)
-  | TwoLeaf (k,x) when k=key -> Child (Leaf x)
-  | Leaf x -> Child (Leaf x)
-  | TwoLeaf xy -> Child (TwoLeaf xy)
-  | Two (l,x,r) when x=key ->
-     begin
-       match (l,r) with
-       | (Leaf l, Leaf r) -> Orphans (l,r)
-       | (TwoLeaf (a,b), Leaf c) | (Leaf a, TwoLeaf (a,b)) -> Child (trio a b c)
-       | (TwoLeaf (a,b), TwoLeaf (c,d)) -> Child (Two (Leaf (min a b), max a b, TwoLeaf (c,d))) (* arbitrary choice? *)
-       | (l,r) ->
-          let 
-     end
-       
-  | Two (Leaf l, x, Leaf r) when x=key -> Orphans (l,r)
-  | Two (TwoLeaf (a,b), x, c) when x=key -> Child (Two ((Leaf (min a b)), (max a b), c))
-  | Two (a, x, TwoLeaf(b,c)) when x=key -> Child (Two (a, (min b c), Leaf (max b c)))
-;;
-
-
-  | Two (l,x,r) when x=k -> Orphans (l,r)
-  | 
-
-let remove key = function
-  | Empty -> Empty
-  | Root root = match removing key root with
-                | Hole -> Empty
-
- *)
-
-(* TODO: Implement delete operation*)
 
 (* TODO: Write tests *)
 

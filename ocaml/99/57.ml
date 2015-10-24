@@ -7,4 +7,3 @@ let rec construct = function
   | x :: t ->
      Node (x, construct (List.filter ((>) x) t), construct (List.filter ((<) x) t)) ;;
 
-
