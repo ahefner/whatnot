@@ -34,3 +34,4 @@ let complete_binary_tree elements =
                build (succ_left index),
                build (succ_right index))
   in build 1 ;;
+
