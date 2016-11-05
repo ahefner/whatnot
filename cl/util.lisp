@@ -36,6 +36,8 @@
   (with-open-file (in filename)
     (read-forms in)))
 
+
+
 (defun average-seq (seq)
   (if (zerop (length seq))
       0
@@ -56,8 +58,11 @@
 (defun extract-column (index seq)
   (map 'vector (lambda (row) (elt row index)) seq))
 
-(defun diff-seq (sequence &optional (result-type 'vector))
+(defun diff-seq-from-0 (sequence &optional (result-type 'vector))
   (map result-type #'- sequence (concatenate 'vector #(0) sequence)))
+
+(defun diff-seq-fwd (sequence &optional (result-type 'vector))
+  (map result-type #'- sequence (subseq sequence 1)))
 
 (defun diff-latched-seq (sequence &optional (result-type 'vector))
   (let ((last-value 0))
@@ -66,3 +71,26 @@
            (prog1 (and x (- x last-value))
              (setf last-value (or x last-value))))
          sequence)))
+
+;;;; Binary files
+
+(defun write-binary-file (filename vector &key
+                          (if-exists :supersede)
+                          (external-format :default)
+                          (element-type '(unsigned-byte 8)))
+  (with-open-file (out filename
+                       :if-exists if-exists :element-type element-type
+                       :external-format external-format :direction :output)
+    (write-sequence vector out)))
+
+(defun binary-file (filename &key (element-type '(unsigned-byte 8)))
+  (with-open-file (in filename :element-type element-type)
+    (let ((data (make-array (file-length in))))
+      (read-sequence data in)
+      data)))
+
+(defsetf binary-file (filename &rest args) (sequence)
+  `(apply 'write-binary-file ,filename ,sequence ,args)
+  ;; Doesn't work on CCL:
+  #+NIL `(write-binary-file ,filename ,sequence ,@args))
+
