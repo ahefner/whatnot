@@ -3,15 +3,13 @@
 # permutation ["a"; "b"; "c"; "d"; "e"; "f"];;
 - : string list = ["a"; "e"; "f"; "b"; "d"; "c"]  *)
 
-exception InvalidArg of string ;;
-
 (* Non-empty complete binary tree, with lists of integers in the leaves *)
 type 'a ctree =
   | Seg of int * 'a list
   | Subtree of int * 'a ctree * 'a ctree ;;
 
 let rec nthtail n = function
-  | [] -> raise (InvalidArg "List can't be empty!")
+  | [] -> failwith "List can't be empty!"
   | x :: t when (n<=0) -> x,t
   | _ :: t -> nthtail (n-1) t ;;
 
