@@ -1,4 +1,23 @@
-09/14 2008
+March 05 2009
+
+- - - - - - - - - - - - - - - - - - - -
+Abadox
+
+$C000 - Bass Drum
+$C0C0 - Tom 1
+$C1C0 - Snare Drum
+$C040 - Tom 2
+$C140 - Tom 3
+
+- - - - - - - - - - - - - - - - - - - -
+A Boy and His Blob
+
+$E000 - Bass Drum
+$EBC0 - Bongo
+$EF00 - Snare Drum
+$F4C0 - Rim Click
+$F8C0 - Tom / Timbale 1
+$F180 - Tom / Timbale 2
 
 - - - - - - - - - - - - - - - - - - - -
 Akumajou Densetsu / Castlevania 3 (J)
@@ -6,7 +25,7 @@ Akumajou Densetsu / Castlevania 3 (J)
 $C000 - Bass Drum
 $C040 - Snare Drum
 $C240 - Tom
-$C900 - Evil Laugh/ Moan (Vocal)
+$C900 - Evil Laugh / Moan (Vocal)
 
 - - - - - - - - - - - - - - - - - - - -
 Bucky O'Hare
@@ -22,6 +41,14 @@ $C240 - Snare Drum
 $C540 - Bass Drum
 
 - - - - - - - - - - - - - - - - - - - -
+Darklord
+
+$C000 - Bass Drum
+$C0C0 - Snare Drum
+$C1C0 - Tom
+$C3C0 - Moan (Vocal)
+
+- - - - - - - - - - - - - - - - - - - -
 Esper Dream 2
 
 $E000 - Snare Drum 1
@@ -31,12 +58,12 @@ $E140 - Bass Drum
 - - - - - - - - - - - - - - - - - - - -
 Fester's Quest
 
-$C000 - Bass (Pitched)
-$C200 - Bass ("")
-$C400 - Bass ("")
-$C600 - Bass ("")
-$C800 - Orchestra Hit (Pitched)
-$CC00 - Orchestra Hit ("")
+$C000 - Bass (Pitched) = D
+$C200 - Bass ("") = C
+$C400 - Bass ("") = B
+$C600 - Bass ("") = A#
+$C800 - Orchestra Hit (Pitched) = c
+$CC00 - Orchestra Hit ("") = A#
 
 - - - - - - - - - - - - - - - - - - - -
 Final Mission
@@ -47,27 +74,29 @@ $FD40 - Snare Drum
 - - - - - - - - - - - - - - - - - - - -
 Fire 'N Ice / Solomon's Key 2
 
-$C000 - Bass (Pitched)
-$C1C0 - Bass ("")
-$C8C0 - Bass ("")
-$C380 - Bass ("")
-$C540 - Bass ("")
-$C700 - Bass ("")
-$CA80 - Bass ("")
-$CC40 - Bass ("")
-$CE00 - Bass ("")
-$CFC0 - Bass ("")
-$D6C0 - Bass ("")
-$D180 - Bass ("")
-$D340 - Bass ("")
-$D500 - Bass ("")
-$D880 - Bass ("")
-$DA40 - Bass ("")
+$C000 - Bass (Pitched) = A
+$C1C0 - Bass ("") = A#
+$C8C0 - Bass ("") = D
+$C380 - Bass ("") = B
+$C540 - Bass ("") = C
+$C700 - Bass ("") = C#
+$CA80 - Bass ("") = D#
+$CC40 - Bass ("") = E
+$CE00 - Bass ("") = F
+$CFC0 - Bass ("") = F#
+$D6C0 - Bass ("") = A#
+$D180 - Bass ("") = G
+$D340 - Bass ("") = G#
+$D500 - Bass ("") = A
+$D880 - Bass ("") = B
+$DA40 - Bass ("") = C
 $DC00 - Snare Drum
 $DE40 - Bongo
 
 - - - - - - - - - - - - - - - - - - - -
-Gimmick! / Mr. Gimmick
+Gimmick! [GLITCHED / ERRONEOUS]
+
+:(
 
 $C400 - Bass (Pitched)
 $C500 - Bass 2 notes (Pitched)
@@ -85,8 +114,8 @@ $D800 - Bass ("")
 - - - - - - - - - - - - - - - - - - - -
 Gradius II
 
-$C000 - Tom/ Bongo
-$C140 - Tom/ Bongo 2
+$C000 - Tom / Bongo
+$C140 - Tom / Bongo 2
 $C280 - Muted Bongo
 $C340 - Snare Drum
 $C640 - Bass Drum
@@ -94,12 +123,12 @@ $C640 - Bass Drum
 - - - - - - - - - - - - - - - - - - - -
 Gremlins 2: The New Batch
 
-$C000 - Tom/ Bass Drum
-$C200 - Bass (Pitched)
-$C600 - Bass ("")
-$CA00 - Bass ("")
-$CE00 - Bass ("")
-$D200 - Bass ("")
+$C000 - Tom / Bass Drum
+$C200 - Bass (Pitched) = C
+$C600 - Bass ("") = D
+$CA00 - Bass ("") = B
+$CE00 - Bass ("") = C#
+$D200 - Bass ("") = A#
 $D600 - Snare Drum
 
 - - - - - - - - - - - - - - - - - - - -
@@ -132,11 +161,11 @@ $C0C0 - Snare Drum
 - - - - - - - - - - - - - - - - - - - -
 Journey to Silius
 
-$C000 - Bass (Pitched)
-$C400 - Bass ("")
-$C800 - Bass ("")
-$CC00 - Bass ("")
-$D000 - Bass ("")
+$C000 - Bass (Pitched) = A#
+$C400 - Bass ("") = C
+$C800 - Bass ("") = D
+$CC00 - Bass ("") = B
+$D000 - Bass ("") = C#
 
 - - - - - - - - - - - - - - - - - - - -
 Jurassic Park
@@ -230,7 +259,7 @@ $C780 - Low Tom
 Recca
 
 $C000 - Bass Drum
-$C100 - Orchestra Hit (Pitched)
+$C100 - Orchestra Hit (Pitched) = F
 $C440 - Shout (Vocal)
 $C780 - Snare Drum
 $C900 - Bass + Snare Drum
@@ -246,10 +275,10 @@ $FC00 - Bass Drum
 SMB3
 
 $D800 - Tom
-$DB80 - Woodblock/ Rim Click
+$DB80 - Woodblock / Rim Click
 $E000 - Bass Drum
 $E080 - Snare Drum
-$E980 - Woodblock/ Rim Click 2
+$E980 - Woodblock / Rim Click 2
 $EA80 - Timbale
 $EE00 - Timpani
 $F280 - Bongo
@@ -261,6 +290,28 @@ $C000 - Snare Drum
 $C2C0 - Bass Drum / Click
 $C140 - Noisy / Hi-Hat
 $C180 - Tom
+
+- - - - - - - - - - - - - - - - - - - -
+Super C
+
+$C000 - Tom 
+$C040 - Musical Segment (Rhythm + Pitched)
+$C140 - Snare Drum
+$C340 - Bass Drum
+$C380 - Orchestra Hit (Pitched) = A#
+$C640 - Orchestra Hit ("") = B
+$C900 - Orchestra Hit ("") = C
+$CBc0 - Orchestra Hit ("") = C#
+$CE80 - Orchestra Hit ("") = D#
+$D6C0 - Orchestra Hit ("") = F#
+$D140 - Orchestra Hit ("") = E
+$D400 - Orchestra Hit ("") = F
+$D980 - Orchestra Hit ("") = G
+$DC40 - Orchestra Hit ("") = G#
+$DF80 - Noisy 1
+$E0C0 - Noisy 2
+$E800 - Noisy 3
+$F4C0 - Noisy 4
 
 - - - - - - - - - - - - - - - - - - - -
 Sword Master
@@ -312,9 +363,14 @@ Tiny Toon Adventures 2
 $C000 - Tom
 $C1C0 - Snare Drum
 $C2C0 - Bass Drum
-$C340 - Bell / Hi Pitched Percussion
+$C340 - Bell / Hi Pitch Percussion
 $C580 - Timbale / Steel Drum
 $C740 - Bongo
+
+- - - - - - - - - - - - - - - - - - - -
+TMNT
+
+$C040 - Bass Drum
 
 - - - - - - - - - - - - - - - - - - - -
 TMNT 2
@@ -352,12 +408,12 @@ $C200 - Snare Drum
 $C340 - Bass Drum
 $C580 - "Beat them up" (Vocal)
 $CB40 - "Game Over" (Vocal)
-$D9C0 - Bass (Pitched)
-$DAC0 - Bass ("")
-$DBC0 - Bass ("")
-$DCC0 - Bass ("")
-$DDC0 - Bass ("")
-$DEC0 - Bass ("")
+$D9C0 - Bass (Pitched) = C
+$DAC0 - Bass ("") = A
+$DBC0 - Bass ("") = A
+$DCC0 - Bass ("") = A#
+$DDC0 - Bass ("") = C
+$DEC0 - Bass ("") = D#
 
 - - - - - - - - - - - - - - - - - - - -
 Track and Field II
@@ -401,14 +457,14 @@ $FD80 - Tom (US)
 Zombie Nation
 
 $C000 - Double Hit
-$C180 - Bass (Pitched)
+$C180 - Bass (Pitched) = A#
 $C440 - Bass Drum
 $C580 - Scream (Vocal)
-$C980 - Orchestra Hit (Pitched)
+$C980 - Orchestra Hit (Pitched) = F
 $CD80 - Snare Drum
 $CF80 - Double Hit 2
 $D000 - Brief Noise
 
 - - - - - - - - - - - - - - - - - - - -
 
-http://explod.tumblr.com/
+http://www.explod.org
