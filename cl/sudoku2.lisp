@@ -206,6 +206,7 @@
     (write-string (puzzle-string prev-moves))
     (format t "~%~%Searching.. called SOLVE ~:D times, backtracked ~:D, depth ~:D~%"
 	    *solve-counter* *backtrack-counter* *depth*)
+    #+NIL
     (loop for index from 1 below 82
        as count = (aref *depth-counts* index)
        until (zerop count)
