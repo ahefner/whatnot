@@ -15,12 +15,19 @@
            hash)
   init)
 
+
 (defun hash-fold-values (hash init fn)
   (hash-fold hash
              init
              (lambda (key value accum)
                (declare (ignore key))
                (funcall fn value accum))))
+
+(defun hash-fold-2 (hash fn &optional init-key init-val)
+  (maphash (lambda (key value)
+             (setf (values init-key init-val) (funcall fn key value init-key init-val)))
+           hash)
+  (values init-key init-val))
 
 (defun histogram-entropy (histogram)
   (let ((scale (/ 1.0 (hash-fold-values histogram 0 (lambda (N sum) (+ sum N))))))
