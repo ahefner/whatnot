@@ -14,13 +14,13 @@
 ;;; Slighty awkward optimization - INTERN words as symbols (in whatever
 ;;; package, who cares) to optimize word graph generation. dict file is 100k
 ;;; words making naive word graph generation on order of 10^10 operations -
-;;; slow enough (a few minutes) to be annoying when using EQUAL hash tables
-;;; doing string hashing.
+;;; slow enough (a few minutes) to be annoying, and using EQUAL hash tables
+;;; doing string hashing seems like a gratuitous inefficiency.
 
 ;;; Oddly, while symbol + EQ hash is about twice as fast as strings +
 ;;; EQUAL hash, symbol + EQL hash was much, much slower. I'd expected
 ;;; the delta for the former to be larger, but it's still
-;;; worthwhile. The latter is baffling.
+;;; worthwhile. The latter (EQ vs EQL hash on symbols) is baffling.
 
 ;;; The word graph is built in quadratic time by calculating
 ;;; WORD-DISTANCE for every pair of words, and takes a minute or two
@@ -64,7 +64,7 @@
      collect other))
 
 (defun build-word-graph (words)
-  "Given a list of words, build a graph 0f words of distance one apart, as 
+  "Given a list of words, build a graph of words of distance one apart, as
 a hash table from the word to a list of neighboring words"
   (loop
      with graph = (make-hash-table :size 200000 :test 'eq)
@@ -107,16 +107,11 @@ a hash table from the word to a list of neighboring words"
                 (incf ntouched)))))
         graph)
        (setf distance-of new-distance-of)
-       #+NIL (break "~A" (list n ntouched))
      until (zerop ntouched)
      finally (blah end (gethash end distance-of) distance-of)))
 
-(defvar *tmp* nil)
-
 (defun blah (next-word next-distance distance-of)
-  (setf *tmp* distance-of)
-  (unless next-distance
-    (error "impossible!"))
+  (assert next-distance)
   (print next-word)
   (maphash
    (lambda (word distance)
