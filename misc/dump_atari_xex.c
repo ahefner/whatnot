@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	expect8(0xFF);
 	expect8(0xFF);
 	int lookahead;
-	while (lookahead = getchar() >= 0)
+	while ((lookahead = getchar()) >= 0)
 	{
 		int uerr = ungetc(lookahead, stdin);
 		assert(uerr != EOF);
